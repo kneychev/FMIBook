@@ -3,7 +3,8 @@ This repository is a Project for Clean Code course in The Faculty of Mathematics
 
 Sadly, the task is written in Bulgarian :
 
-  FMIBOOK
+FMIBOOK
+
   От скоро разчулите се новини стана ясно, че често се случва социалните мрежи, които повечето от нас използват, да продават информацията от нашите профили на трети лица. Маркони иска да направи нова социална мрежа, в която всички данни са защитени от външния свят. Понеже не разбира особено много от програмиране, Маркони, на кратко Марк, си търси кой да му помогне. Дочул, че във ФМИ имало добри студенти, и че им трябва трето домашно. Затова решил да им възложи част от проекта си, за да види как ще се справят и дали ще ги наеме за останалата част.
   Марк желае да има три вида потребители с различни права - обикновени, модератори и администратор. Всеки потребител си има уникален прякор (nickname) и възраст в години.
   
@@ -29,34 +30,41 @@ Sadly, the task is written in Bulgarian :
   Могат да бъдат изпращани следните заявки :
 
 ● Добавяне на нов потребител или модератор.
+
 Пример : 
 Admin add_moderator Kiril 23 - добавя модератора Кирил на 23г.
 Admin add_user Vasil 30 - добавя обикновения потребител Васил на 30г.
 
 ● Премахване на потребител или модератор.
+
 Пример : 
 Admin remove_user Vasil
 
 ● Блокиране / разблокиране на потребител или модератор.
+
 Пример : 
 Admin block Kiril
 Kiril unblock Kiril - хм, този модератор не е много съвестен :-/
 
 ● Добавяне на нова публикация.
+
 Пример : 
 Kiril post [image] /home/kiril/img/hello.png
 Admin post [url] http://www.example.com някакво описание
 Kiril post [text] Hello, world!
 
 ● Премахване на публикация.
+
 Пример : 
 Kiril remove_post 8
 
 ● Потребител разглежда пост на друг потребител.
+
 Пример : 
 Kiril view_post 10  - за Кирил се генерира HTML файл със съдържанието на публикация номер 10.
 
 ● По подаден потребител да се създаде HTML файл с всички негови публикации.
+
 Пример : 
 Ivan view_all_posts Kiril
 
@@ -74,45 +82,66 @@ Ivan view_all_posts Kiril
 описаните възможности. Пример за работа със системата е:
 
 $: Admin add_user Pesho 21
+
 Pesho created.
+
 $: Pesho post [url] http://www.example.com Някакъв пример.
 Post 0 created.
+
 $: Pesho post [image] /home/pesho/img/hello.png
 Post 1 created.
+
 $: Admin add_moderator Gencho 28
 Gencho created.
+
 $: Gencho post [text] Hello everybody!
 Post 2 created.
+
 $: Pesho post [text] Hi, Gencho!
 Post 3 created.
+
 $: Pesho post [text] See my new bike:
 Post 4 created.
+
 $: Pesho post [image] /home/pesho/img/dzvera.png
 Post 5 created.
+
 $: Pesho post [text] egati i typoto kolelo e!!!
 Post 6 created.
+
 $: Pesho remove_post 6.
 Post 6 removed.
+
 $: Pesho post [text] egati i qkoto kolelo e!!!
 Post 7 created.
+
 $: Gencho post [text] Please do not use shliokavitsa!
 Post 8 created.
+
 $: Pesho post [text] Be ti li 6a mi kaje6!?
 Post 9 created.
+
 $: Gencho block Pesho.
 Pesho blocked.
+
 $: Pesho post [text] Na kyw mi se prai6!?
 Post not created - user blocked!
+
 $: Pesho post [text] Ej!!!!?
 Post not created - user blocked!
+
 $: Gencho post [text] Pesho, please, calm down!
 Post 10 created.
+
 $: Pesho post [text] Ti li 6a mi kave6!!!!?
 Post not created - user blocked!
+
 $: Admin remove_user Pesho.
 Pesho removed.
+
 $: Admin rename Pesho.
 User Admin is now known as Pesho.
+
 $: info
 There are 2 users:
 Pesho - Administrator, 0 posts.
@@ -120,20 +149,29 @@ Gencho - Moderator, 2 posts.
 There aren’t any blocked users.
 oldest Gencho 28
 youngest Gencho 28
+
 $: Gencho remove_post 9
 No such post!
+
 $: Gencho remove_post 10
 Post 10 removed.
+
 $: Admin add_user Mimi 19
 No such user : Admin!
+
 $: Pesho add_user Mimi 19
 User Mimi created.
+
 $: Mimi post [image] /home/mimi/img/profile_pic.jpg
 Post 11 created.
+
 $: Gecho view_post 11
 HTML view for post 11 created.
+
 $: Mimi view_all_posts Gencho
 HTML view for all Gencho’s posts created.
+
 $: delete system
 Unknown command!
+
 $: quit

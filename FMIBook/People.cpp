@@ -2,8 +2,10 @@
 
 const int MAX_NAME_LENGTH = 128;
 
-People::People() : mods(nullptr), sizeOfModsArr(0), capacityOfModsArr(0), users(nullptr), sizeOfUsersArr(0), capacityOfUsersArr(0),
-				   blockedNames(nullptr), sizeOfBlockedNamesArr(0), capacityOfBLockedNamesArr(0)
+People::People() : mods(nullptr), sizeOfModsArr(0), capacityOfModsArr(0),
+				users(nullptr), sizeOfUsersArr(0), capacityOfUsersArr(0),
+				blockedNames(nullptr), sizeOfBlockedNamesArr(0), 
+				capacityOfBLockedNamesArr(0)
 {
 	admin.SetNickname("Admin");
 	admin.SetAge(14); // He is only 8th grade
@@ -328,7 +330,7 @@ void People::ChangeNickname(const char* oldNick, const char* newNick)
 			return;
 		}
 	}
-									// check if the old name concides
+											// check if the old name concides
 	for (int i = 0; i < sizeOfModsArr; ++i) // with some moderator's name
 	{
 		if (strcmp(oldNick, mods[i].GetNickname()) == 0)
@@ -366,6 +368,23 @@ User& People::FindPerson(const char* nickname)
 			return users[i];
 		}
 	}
+}
+
+bool People::isModerator(const char* nickname) const
+{
+	for (int i = 0; i < sizeOfModsArr; ++i)
+	{
+		if (strcmp(mods[i].GetNickname(), nickname) == 0)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool People::isAdmin(const char* nickname) const
+{
+	return (strcmp(admin.GetNickname(), nickname) == 0);
 }
 
 bool People::PersonExists(const char* nickname) const

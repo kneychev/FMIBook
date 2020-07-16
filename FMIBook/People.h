@@ -16,6 +16,8 @@ public:
 	void ChangeNickname(const char* oldNick, const char* newNick);
 	User& FindPerson(const char* nickname);
 
+	bool isModerator(const char* nickname) const;
+	bool isAdmin(const char* nickname) const;
 	bool PersonExists(const char* nickname) const;
 	bool NameIsBusy(const char* nickname) const;
 	bool isBlocked(const char* nickname) const;

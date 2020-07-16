@@ -29,7 +29,7 @@ Text::~Text()
 {
 }
 
-void Text::SaveToFile(std::ofstream& out)
+void Text::SaveToFile(std::ofstream& out, const char* actor, int ID)
 {
 	out.open("Publication-Text.html");
 	if (!out)
@@ -37,6 +37,7 @@ void Text::SaveToFile(std::ofstream& out)
 		std::cerr << "Could not create the html file!\n";
 		return;
 	}
+	out << actor << " viewed post with id=" << ID << '\n';
 	out << GetContend() << std::endl;
 	out.close();
 }

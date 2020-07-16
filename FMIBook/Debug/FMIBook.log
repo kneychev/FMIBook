@@ -1,6 +1,8 @@
 ﻿  FMIBook.cpp
-c:\users\neychev\source\repos\fmibook\fmibook\fmibook.cpp(197): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\neychev\source\repos\fmibook\fmibook\fmibook.cpp(371): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(338): note: see declaration of 'strncpy'
-c:\users\neychev\source\repos\fmibook\fmibook\fmibook.cpp(198): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\neychev\source\repos\fmibook\fmibook\fmibook.cpp(372): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(90): note: see declaration of 'strcat'
+  Main.cpp
+  Generating Code...
   FMIBook.vcxproj -> C:\Users\Neychev\source\repos\FMIBook\Debug\FMIBook.exe

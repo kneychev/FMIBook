@@ -16,7 +16,7 @@ public:
 
 	void Add(const Publication& p);
 	void Remove(int ID);
-	void ViewPost(int ID) const;
+	void ViewPost(const char* actor, int ID) const;
 
 private:
 	void resize();

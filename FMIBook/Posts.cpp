@@ -77,14 +77,15 @@ void Posts::Remove(int ID)
 	sizeOfPostsArr--;
 }
 
-void Posts::ViewPost(int ID) const
+void Posts::ViewPost(const char* actor, int ID) const
 {
 	std::ofstream out;
 	for (int i = 0; i < sizeOfPostsArr; ++i)
 	{
 		if (posts[i]->GetID() == ID)
 		{
-			posts[i]->SaveToFile(out);
+			posts[i]->SaveToFile(out, actor, ID);
+			std::cout << actor << " viewed post " << ID << std::endl;
 			return;
 		}
 	}

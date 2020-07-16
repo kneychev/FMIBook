@@ -28,7 +28,7 @@ Image::~Image()
 {
 }
 
-void Image::SaveToFile(std::ofstream& out)
+void Image::SaveToFile(std::ofstream& out, const char* actor, int ID)
 {
 	out.open("Publication-Image.html");
 	if (!out)
@@ -36,6 +36,7 @@ void Image::SaveToFile(std::ofstream& out)
 		std::cerr << "Could not create the html file!\n";
 		return;
 	}
+	out << actor << " viewed post with id=" << ID << '\n';
 	out << "<img src=\"" << GetContend() << "\">";
 	out.close();
 }

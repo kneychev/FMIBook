@@ -11,7 +11,7 @@ public:
 	Image& operator=(const Image& rhs);
 	virtual ~Image();
 
-	virtual void SaveToFile(std::ofstream& out);
+	virtual void SaveToFile(std::ofstream& out, const char* actor, int ID);
 	virtual void SaveManyToFile(std::ofstream& out);
 	virtual Publication* clone() const;
 };

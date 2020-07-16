@@ -70,7 +70,7 @@ const char* URL::GetDescription() const
 	return description;
 }
 
-void URL::SaveToFile(std::ofstream& out)
+void URL::SaveToFile(std::ofstream& out, const char* actor, int ID)
 {
 	out.open("Publication-URL.html");
 	if (!out)
@@ -78,6 +78,7 @@ void URL::SaveToFile(std::ofstream& out)
 		std::cerr << "Could not create the html file!\n";
 		return;
 	}
+	out << actor << " viewed post with id=" << ID << '\n';
 	out << "<a href=\"" << GetContend()
 		<< "\">" << GetDescription() << "</a>";
 	out.close();

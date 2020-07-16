@@ -16,7 +16,7 @@ public:
 	const int GetID() const;
 	const char* GetContend() const;
 
-	virtual void SaveToFile(std::ofstream& out) = 0;
+	virtual void SaveToFile(std::ofstream& out, const char* actor, int ID) = 0;
 	virtual void SaveManyToFile(std::ofstream& out) = 0;
 	virtual Publication* clone() const = 0;
 

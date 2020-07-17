@@ -8,7 +8,7 @@ URL::URL() : Publication(), description(nullptr)
 
 URL::URL(int ID, const char* url, const char* desc) : description(nullptr)
 {
-	SetContend(url);
+	SetContent(url);
 	SetId(ID);
 	SetDescription(desc);
 }
@@ -79,14 +79,14 @@ void URL::SaveToFile(std::ofstream& out, const char* actor, int ID)
 		return;
 	}
 	out << actor << " viewed post with id=" << ID << '\n';
-	out << "<a href=\"" << GetContend()
+	out << "<a href=\"" << GetContent()
 		<< "\">" << GetDescription() << "</a>";
 	out.close();
 }
 
 void URL::SaveManyToFile(std::ofstream& out)
 {
-	out << "<a href=\"" << GetContend()
+	out << "<a href=\"" << GetContent()
 		<< "\">" << GetDescription() << "</a>" << std::endl;
 }
 

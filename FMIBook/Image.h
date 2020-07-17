@@ -6,7 +6,7 @@ class Image :
 {
 public:
 	Image();
-	Image(int id, const char* contend);
+	Image(int id, const char* content);
 	Image(const Image& other);
 	Image& operator=(const Image& rhs);
 	virtual ~Image();

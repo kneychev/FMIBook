@@ -5,7 +5,7 @@ class Text :
 {
 public:
 	Text();
-	Text(int ID, const char* newContend);
+	Text(int ID, const char* newContent);
 	Text(const Text& other);
 	Text& operator=(const Text& rhs);
 	virtual ~Text();

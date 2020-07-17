@@ -5,10 +5,10 @@ Text::Text() : Publication()
 {
 }
 
-Text::Text(int ID, const char* newContend)
+Text::Text(int ID, const char* newContent)
 {
 	SetId(ID);
-	SetContend(newContend);
+	SetContent(newContent);
 }
 
 Text::Text(const Text& other) : Publication(other)
@@ -38,13 +38,13 @@ void Text::SaveToFile(std::ofstream& out, const char* actor, int ID)
 		return;
 	}
 	out << actor << " viewed post with id=" << ID << '\n';
-	out << GetContend() << std::endl;
+	out << GetContent() << std::endl;
 	out.close();
 }
 
 void Text::SaveManyToFile(std::ofstream& out)
 {
-	out << GetContend() << '\n';
+	out << GetContent() << '\n';
 }
 
 Publication* Text::clone() const

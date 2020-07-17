@@ -1,19 +1,19 @@
 #include "Publication.h"
 
-Publication::Publication(int newId, char* newContend)
-	: id(newId), contend(newContend)
+Publication::Publication(int newId, char* newContent)
+	: id(newId), content(newContent)
 {
 }
 
 Publication::Publication(const Publication& other)
 {
-	contend = new(std::nothrow) char[strlen(other.contend) + 1];
-	if (!contend)
+	content = new(std::nothrow) char[strlen(other.content) + 1];
+	if (!content)
 	{
-		std::cerr << "Could not allocate memory for the contend of publication!\n";
+		std::cerr << "Could not allocate memory for the content of publication!\n";
 		exit(1);
 	}
-	strncpy(contend, other.contend, strlen(other.contend) + 1);
+	strncpy(content, other.content, strlen(other.content) + 1);
 	id = other.id;
 }
 
@@ -21,15 +21,15 @@ Publication& Publication::operator=(const Publication& rhs)
 {
 	if (this != &rhs)
 	{
-		delete[] contend;
+		delete[] content;
 
-		contend = new(std::nothrow) char[strlen(rhs.contend) + 1];
-		if (!contend)
+		content = new(std::nothrow) char[strlen(rhs.content) + 1];
+		if (!content)
 		{
-			std::cerr << "Could not allocate memory for the contend of publication!\n";
+			std::cerr << "Could not allocate memory for the content of publication!\n";
 			exit(1);
 		}
-		strncpy(contend, rhs.contend, strlen(rhs.contend) + 1);
+		strncpy(content, rhs.content, strlen(rhs.content) + 1);
 		id = rhs.id;
 	}
 	return *this;
@@ -37,7 +37,7 @@ Publication& Publication::operator=(const Publication& rhs)
 
 Publication::~Publication()
 {
-	delete[] contend;
+	delete[] content;
 	id = -1;
 }
 
@@ -46,21 +46,21 @@ void Publication::SetId(int newId)
 	id = newId;
 }
 
-void Publication::SetContend(const char* newContend)
+void Publication::SetContent(const char* newContent)
 {
-	if (contend)
+	if (content)
 	{
-		delete[] contend;
-		contend = nullptr;
+		delete[] content;
+		content = nullptr;
 	}
 
-	contend = new(std::nothrow) char[strlen(newContend) + 1];
-	if (!contend)
+	content = new(std::nothrow) char[strlen(newContent) + 1];
+	if (!content)
 	{
-		std::cerr << "Could not allocate memory for the contend of publication!\n";
+		std::cerr << "Could not allocate memory for the content of publication!\n";
 		exit(1);
 	}
-	strncpy(contend, newContend, strlen(newContend) + 1);
+	strncpy(content, newContent, strlen(newContent) + 1);
 }
 
 const int Publication::GetID() const
@@ -68,9 +68,9 @@ const int Publication::GetID() const
 	return id;
 }
 
-const char* Publication::GetContend() const
+const char* Publication::GetContent() const
 {
-	return contend;
+	return content;
 }
 
 

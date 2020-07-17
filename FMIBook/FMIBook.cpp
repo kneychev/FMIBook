@@ -17,122 +17,6 @@ FMIBook::~FMIBook()
 
 void FMIBook::Execute()
 {
-/*	while (true)
-	{
-		char actor[MAX_NICKNAME_LENGTH];
-		std::cin >> actor;
-
-		if (strcmp(actor, "quit") == 0)
-		{
-			break;
-		}
-		if (strcmp(actor, "info") == 0)
-		{
-			Info();
-			std::cin.ignore(10000, '\n');
-			continue;
-		}
-
-		char command[MAX_COMMAND_SIZE];
-		std::cin >> command;
-
-		if (strcmp(command, "add_user") == 0)
-		{
-			char userNickname[MAX_NICKNAME_LENGTH];
-			std::cin >> userNickname;
-
-			int age;
-			std::cin >> age;
-			people.AddUser(actor, userNickname, age);
-		}
-		else if (strcmp(command, "add_moderator") == 0)
-		{
-			char moderatorNickname[MAX_NICKNAME_LENGTH];
-			std::cin >> moderatorNickname;
-
-			int age;
-			std::cin >> age;
-			people.AddModerator(actor, moderatorNickname, age);
-		}
-		else if (strcmp(command, "remove_user") == 0)
-		{
-			char userNickname[MAX_NICKNAME_LENGTH];
-			std::cin >> userNickname;
-
-			people.RemoveUser(actor, userNickname);
-			RemoveSomeonePosts(userNickname);
-		}
-		else if (strcmp(command, "remove_moderator") == 0)
-		{
-			char moderatorNickname[MAX_NICKNAME_LENGTH];
-			std::cin >> moderatorNickname;
-
-			people.RemoveModerator(actor, moderatorNickname);
-			RemoveSomeonePosts(moderatorNickname);
-		}
-		else if (strcmp(command, "block") == 0)
-		{
-			char blocked[MAX_NICKNAME_LENGTH];
-			std::cin >> blocked;
-
-			people.Block(actor, blocked);
-		}
-		else if (strcmp(command, "unblock") == 0)
-		{
-			char unblocked[MAX_NICKNAME_LENGTH];
-			std::cin >> unblocked;
-
-			people.Unblock(actor, unblocked);
-		}
-		else if (strcmp(command, "change_name") == 0)
-		{
-			char newNick[MAX_NICKNAME_LENGTH];
-			std::cin >> newNick;
-
-			people.ChangeNickname(actor, newNick);
-		}
-		else if (strcmp(command, "post") == 0)
-		{
-			char type[MAX_POST_TYPE_NAME_LENGHT];
-			std::cin >> type;
-
-			MakePost(actor, type);
-		}
-		else if (strcmp(command, "remove_post") == 0) 
-		{
-			if ( !people.isAdmin(actor) && !people.isModerator(actor) )
-			{
-				std::cout << actor << " has no rights to remove posts!\n";
-				continue;
-			}
-
-			int idRemove;
-			std::cin >> idRemove;
-
-			posts.Remove(idRemove);
-		}
-		else if (strcmp(command, "view_post") == 0)
-		{
-			int idView;
-			std::cin >> idView;
-
-			posts.ViewPost(actor, idView);
-		}
-		else if (strcmp(command, "view_all_posts") == 0)
-		{
-			char postsOwner[MAX_NICKNAME_LENGTH];
-			std::cin.ignore(100, ' ');
-			std::cin.getline(postsOwner, MAX_NICKNAME_LENGTH);
-
-			ViewAllPosts(actor, postsOwner);
-		}
-		else
-		{
-			std::cout << "Unknown command!\n";
-			std::cin.ignore(10000, '\n');
-		}
-	}*/
-	
 	bool shouldWork = true;
 
 	while (shouldWork)
@@ -175,9 +59,12 @@ void FMIBook::Execute()
 		if (it == userCommands.end())
 		{
 			std::cout << "Invalid command!\n";
+			std::cin.ignore(MAX_ROW_LENGTH, '\n');
 			continue;
 		}
 
+		// Calling the function, that corresponds to the entered command,
+		// with argument "input", which is the "actor" in out case.
 		(this->*(it->second))(input);
 	}
 }
@@ -367,7 +254,7 @@ void FMIBook::ViewAllPosts(const char* actor, const char* owner)
 		std::cerr << "Could not allocate memory!\n";
 		exit(1);
 	}
-	
+
 	strncpy(fileName, owner, strlen(owner) + 1);
 	strcat(fileName, "'s posts.html");
 

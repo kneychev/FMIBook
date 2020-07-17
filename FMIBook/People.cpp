@@ -47,6 +47,7 @@ void People::RemoveModerator(const char* adminName, const char* modName)
 	}
 
 	int idx = -1;
+
 	for (int i = 0; i < sizeOfModsArr; ++i)
 	{
 		if (strcmp(mods[i].GetNickname(), modName) == 0)
@@ -91,6 +92,7 @@ void People::AddUser(const char* adminName, const char* userName, int age)
 	User tmp(userName, age);
 
 	users[sizeOfUsersArr++] = tmp;
+
 	std::cout << admin.GetNickname() << " added user " << tmp.GetNickname() << "!\n";
 }
 
@@ -103,6 +105,7 @@ void People::RemoveUser(const char* adminName, const char* userName)
 	}
 
 	int idx = -1;
+
 	for (int i = 0; i < sizeOfUsersArr; ++i)
 	{
 		if (strcmp(users[i].GetNickname(), userName) == 0)
@@ -127,7 +130,6 @@ void People::RemoveUser(const char* adminName, const char* userName)
 	
 	sizeOfUsersArr--;
 }
-
 
 void People::Block(const char* blocker, const char* blocked)
 {

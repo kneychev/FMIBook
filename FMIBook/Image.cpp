@@ -5,10 +5,10 @@ Image::Image() : Publication()
 {
 }
 
-Image::Image(int id, const char* contend)
+Image::Image(int id, const char* content)
 {
 	SetId(id);
-	SetContend(contend);
+	SetContent(content);
 }
 
 Image::Image(const Image& other) : Publication(other)
@@ -37,13 +37,13 @@ void Image::SaveToFile(std::ofstream& out, const char* actor, int ID)
 		return;
 	}
 	out << actor << " viewed post with id=" << ID << '\n';
-	out << "<img src=\"" << GetContend() << "\">";
+	out << "<img src=\"" << GetContent() << "\">";
 	out.close();
 }
 
 void Image::SaveManyToFile(std::ofstream& out)
 {
-	out << "<img src=\"" << GetContend() << "\">\n";
+	out << "<img src=\"" << GetContent() << "\">\n";
 }
 
 Publication* Image::clone() const
